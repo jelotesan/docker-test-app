@@ -4,7 +4,7 @@ FROM microsoft/aspnetcore:1.1
 #RUN ["dotnet", "publish ./WebApplication1.sln -c Release -o ./obj/Docker/publish"]
 
 ARG source
-#WORKDIR /WebApplication1/WebApplication1
+WORKDIR /app
 EXPOSE 80
 COPY ${source:-obj/Docker/publish} .
 ENTRYPOINT ["dotnet", "WebApplication1.dll"]
