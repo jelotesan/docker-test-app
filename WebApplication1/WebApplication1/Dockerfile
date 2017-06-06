@@ -1,6 +1,14 @@
 FROM microsoft/aspnetcore:1.1
-ARG source
+
+
+
+COPY . /app
 WORKDIR /app
-EXPOSE 80
-COPY ${source:-obj/Docker/publish} .
-ENTRYPOINT ["dotnet", "WebApplication1.dll"]
+
+RUN ["dotnet", "restore"]
+RUN ["dotnet", "build"]
+
+EXPOSE 80/tcp
+ENV ASPNETCORE_URLS http://*:80
+
+ENTRYPOINT ["dotnet", "run"]
