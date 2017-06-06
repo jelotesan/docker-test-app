@@ -6,5 +6,5 @@ FROM microsoft/aspnetcore:1.1
 ARG source=master
 WORKDIR /app
 EXPOSE 80
-COPY ${source:-obj/Docker/publish} .
+COPY master:-obj/Docker/publish .
 ENTRYPOINT ["dotnet", "WebApplication1.dll"]
