@@ -1,14 +1,6 @@
 FROM microsoft/aspnetcore:1.1
-
-
-
-COPY . /app
+ARG source
 WORKDIR /app
-
-RUN ["dotnet", "restore"]
-RUN ["dotnet", "build"]
-
-EXPOSE 80/tcp
-ENV ASPNETCORE_URLS http://*:80
-
-ENTRYPOINT ["dotnet", "run"]
+EXPOSE 80
+COPY . /app
+ENTRYPOINT ["dotnet", "WebApplication1.dll"]
